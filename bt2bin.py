@@ -1,5 +1,5 @@
 ## Battletoads NES - Texts Graphics Extractor
-## CR-32: 785DD088
+## CR-32: 279710DC
 
 import sys
 import os
