@@ -1,5 +1,5 @@
 ## Battletoads NES - Texts Graphics Extractor
-## CR-32: 279710DC
+## CR-32: 785DD088
 
 import sys
 import os
@@ -35,7 +35,7 @@ def compress_rle(data, byte_flag_00, byte_flag_ff):
             while i + 1 < len(data) and data[i + 1] == 0x00:
                 count += 1
                 i += 1  
-            if count > 2:
+            if count > 1:
                 compressed_data.append(byte_flag_00)  
                 compressed_data.append(count) 
             else:
@@ -46,7 +46,7 @@ def compress_rle(data, byte_flag_00, byte_flag_ff):
             while i + 1 < len(data) and data[i + 1] == 0xFF:
                 count += 1
                 i += 1  
-            if count > 2:
+            if count > 1:
                 compressed_data.append(byte_flag_ff) 
                 compressed_data.append(count) 
             else:
@@ -169,15 +169,15 @@ def main():
         #compress
         fonts_compress = compress_fonts(fonts_decompress)
         map1_compress = compress_rle(map1_decompress, 0x4D, 0x56)
-        map2_compress = compress_rle(map2_decompress, 0x4D, 0x56)
-        map3_compress = compress_rle(map3_decompress, 0x4D, 0x56)
-        map4_compress = compress_rle(map4_decompress, 0x4D, 0x56)
-        
+        map2_compress = compress_rle(map2_decompress, 0x72, 0x95)
+        map3_compress = compress_rle(map3_decompress, 0x17, 0x1D)
+        map4_compress = compress_rle(map4_decompress, 0x15, 0x28)       
         #write rom
-        write_rom(rom_file, player_select_compress, player_select_bank, player_select_bank_size, player_select_output)
-        write_rom(rom_file, lvl_hud_decompress, lvl_hud_bank, lvl_hud_bank_size, lvl_hud_output)
         write_rom(rom_file, fonts_compress, fonts_bank, fonts_bank_size, fonts_output)
-        write_rom(rom_file, fonts_16_compress, fonts_16_bank, fonts_16_bank_size, fonts_16_output)
+        write_rom(rom_file, map1_compress, map1_bank, map1_bank_size, map1_output)
+        write_rom(rom_file, map2_compress, map2_bank, map2_bank_size, map2_output)
+        write_rom(rom_file, map3_compress, map3_bank, map3_bank_size, map3_output)
+        write_rom(rom_file, map4_compress, map4_bank, map4_bank_size, map4_output)
          
     else:
         print("Usage: -d -decompress graphics")
