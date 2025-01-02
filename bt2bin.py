@@ -51,7 +51,15 @@ def compress_rle(data, byte_flag_00, byte_flag_ff):
                 compressed_data.append(count) 
             else:
                 compressed_data.append(byte)
-        
+
+        elif byte == byte_flag_00:
+            byte += 1
+            compressed_data.append(byte)
+
+        elif byte == byte_flag_ff:
+            byte += 1
+            compressed_data.append(byte)
+            
         else:
             compressed_data.append(byte)  
         
