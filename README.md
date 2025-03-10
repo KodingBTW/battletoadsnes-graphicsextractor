@@ -7,7 +7,7 @@ Synopsis:
 ```
 btdd2bin.py [-d | -c] --decompress --compress
 ```
-The rom must be "Battletoads (USA).nes" CR-32: 279710DC, rename the rom or change in line 116.
+The rom name must be called "Battletoads (USA).nes" CR-32: 279710DC, rename the rom or change in line 116.
 
 ## Frecuency Answer Questions
 
